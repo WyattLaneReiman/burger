@@ -15,6 +15,17 @@ router.get("/", function (req, res) {
 
 });
 
+router.delete("/api/burgers", function (req, res) {
+    var condition = "devoured = 1";
+
+    burger.delete(
+        condition, function (result) {
+            console.log(result);
+            res.status(200).end();
+        }
+    )
+});
+
 router.get("/api/burgers", function (req, res) {
     burger.all(function (data) {
         res.json(data);
@@ -48,16 +59,5 @@ router.put("/api/burgers/:id", function (req, res) {
         }
     });
 });
-
-router.delete("/api/burgers", function (req, res) {
-    var condition = "devoured = 1";
-
-    burger.delete(
-        condition, function (result) {
-            console.log(result);
-            res.status(200).end();
-        }
-    )
-})
 
 module.exports = router;
