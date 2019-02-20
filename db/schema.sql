@@ -5,7 +5,7 @@ create table burgers (
 		id integer(100) auto_increment not null,
         primary key (id),
         burger_name varchar(100) not null,
-        devoured boolean not null
+        devoured boolean default false
         );
         
 select * from burgers;
